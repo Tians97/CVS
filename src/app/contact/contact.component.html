@@ -1,0 +1,21 @@
+<h2>Contact</h2>
+
+<form [formGroup]="contactForm"  (ngSubmit)="onSubmit()">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+        Name is Required!
+    </div>
+    <label>Message</label>
+    <input type="text" formControlName="message">
+    <div  *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+        Message is required or Message should not less than 10 characters
+    </div>
+    <button>Submit</button>
+</form>
+
+<div *ngIf="submit">
+    <p>Success!</p>
+    <p>Name: {{ contactForm.value.name }}</p>
+    <p>Message: {{ contactForm.value.message }}</p>
+</div>
